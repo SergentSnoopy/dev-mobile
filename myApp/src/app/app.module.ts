@@ -15,7 +15,7 @@ import {CreateTodoComponent} from './models/create-todo/create-todo.component';
 @NgModule({
   declarations: [AppComponent, CreateListComponent, CreateTodoComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAnalyticsModule, AngularFirestoreModule],
   providers: [
     StatusBar,
     SplashScreen,
