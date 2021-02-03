@@ -1,0 +1,22 @@
+<div id="container">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label>
+        Name
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input id="name" type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Description
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input id="desc" type="text" formControlName="desc"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" type="submit">Créer Todo</ion-button>
+  </form>
+</div>
