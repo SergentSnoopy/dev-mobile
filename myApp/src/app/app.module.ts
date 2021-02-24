@@ -11,6 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {CreateListComponent} from './modals/create-list/create-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CreateTodoComponent} from './models/create-todo/create-todo.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, CreateListComponent, CreateTodoComponent],
