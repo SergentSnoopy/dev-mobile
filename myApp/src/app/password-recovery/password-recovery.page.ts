@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
+
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {AuthentService} from '../services/authent.service';
-=======
->>>>>>> 298f386eeafc547365a0aed3860a5ca11067e356
+
 
 @Component({
   selector: 'app-password-recovery',
@@ -14,7 +13,6 @@ import {AuthentService} from '../services/authent.service';
 })
 export class PasswordRecoveryPage implements OnInit {
 
-<<<<<<< HEAD
   public reset: FormGroup;
   public withEmail: boolean;
 
@@ -46,11 +44,5 @@ export class PasswordRecoveryPage implements OnInit {
   }
 
   ngOnInit(): void {
-=======
-  constructor() { }
-
-  ngOnInit() {
->>>>>>> 298f386eeafc547365a0aed3860a5ca11067e356
   }
-
 }
