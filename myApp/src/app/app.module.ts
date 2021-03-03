@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent, CreateListComponent, CreateTodoComponent],
   entryComponents: [],
+  // tslint:disable-next-line:max-line-length
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAnalyticsModule, AngularFirestoreModule],
   providers: [
     StatusBar,

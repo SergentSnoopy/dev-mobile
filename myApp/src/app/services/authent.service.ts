@@ -25,6 +25,10 @@ export class AuthentService {
     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
+  async resetPassword(mail: string){
+    return await this.afAuth.sendPasswordResetEmail(mail);
+  }
+
   async logout() {
     return await this.afAuth.signOut();
   }
