@@ -1,5 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Login
+    </ion-title>    
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-text-center">
-  <ion-icon name="person-add-outline" routerLink="/register" style="zoom:2.0;"></ion-icon>
+  
+  
   <section class="ion-margin-vertical">
     <ion-button color="dark" expand="block" shape="round" fill="outline" large (click)="withEmail = !withEmail">
       <ion-icon slot="end" name="mail"></ion-icon>
@@ -24,7 +33,7 @@
         <div class="text-danger" *ngIf="login.invalid && login.get('password').touched && login.get('password').errors">
           <small *ngIf="login.get('password').errors.required">Field is required</small>
         </div>
-        <ion-button color="secondary" expand="block" shape="round" fill="outline" type="submit" large
+        <ion-button color="primary" expand="block" shape="round"  type="submit" large
           [disabled]="login.invalid">
           <ion-icon slot="end" name="home"></ion-icon>
           Login
@@ -33,10 +42,23 @@
     </section>
     <section class="ion-margin-vertical">
       <ion-label>Mot de passe oublié ?</ion-label>
-      <ion-button color="secondary" expand="block" shape="round" fill="outline" type="submit" large
+    </section>
+    <section class="ion-margin-vertical">
+      <ion-button color="secondary"  shape="round" fill="outline" large
                   routerLink="/password-recovery">
-        <ion-icon name="refresh-circle-outline"></ion-icon>
+        Récupérer le mot de passe
       </ion-button>
     </section>
   </div>
+  <section  class="ion-margin-vertical">
+    <br/> 
+    <br/>
+    <br/> 
+    <br/>
+    <ion-button color="primary" fill="outline" shape="round" large
+        routerLink="/register">
+      <ion-icon slot="end" name="person-add-outline"></ion-icon> 
+      Créer compte
+    </ion-button>
+  </section>
 </ion-content>

@@ -28,6 +28,7 @@ export class LoginPage {
 
 
   async loginForm(){
+    console.log("testbl");
     if (this.login.valid) {
       try {
         await this.auth.login(this.login.get('email').value,
