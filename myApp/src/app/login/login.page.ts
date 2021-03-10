@@ -28,11 +28,9 @@ export class LoginPage {
 
 
   async loginForm(){
-    console.log("testbl");
     if (this.login.valid) {
       try {
-        await this.auth.login(this.login.get('email').value,
-        this.login.get('password').value);
+        await this.auth.login(this.login.get('email').value, this.login.get('password').value);
         this.route.navigate(['home']);
       } catch (e) {
         const toast = await this.toastController.create({
