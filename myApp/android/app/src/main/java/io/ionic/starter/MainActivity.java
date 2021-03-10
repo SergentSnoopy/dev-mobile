@@ -4,6 +4,15 @@ import android.os.Bundle;
 
 import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
+import com.baumblatt.capacitor.firebase.auth.CapacitorFirebaseAuth;
+
+import com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth;
+
+this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+  // Additional plugins you've installed go here
+  // Ex: add(TotallyAwesomePlugin.class);
+  add(CapacitorFirebaseAuth.class);
+}});
 
 import java.util.ArrayList;
 
@@ -16,6 +25,7 @@ public class MainActivity extends BridgeActivity {
     this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
       // Additional plugins you've installed go here
       // Ex: add(TotallyAwesomePlugin.class);
+    add(GoogleAuth.class);
     }});
   }
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "119788440059",
+    "firebase_url": "https://projet-dev-mobile-fcb0f-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "projet-dev-mobile-fcb0f",
+    "storage_bucket": "projet-dev-mobile-fcb0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119788440059:android:765f3c056a86052feea35e",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119788440059-d28p0uujr3gnjsddpekh8ct2lirh47t6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "6b1e47c51a16757ccd76c39f094f9791f003900d"
+          }
+        },
+        {
+          "client_id": "119788440059-d5l6i4ejp4d2fb9ko7u6t5essfg3d4pf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCXq991SlWfh6PoA6pHWQpyzHWV105BsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119788440059-d5l6i4ejp4d2fb9ko7u6t5essfg3d4pf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
