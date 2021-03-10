@@ -22,7 +22,6 @@ export class ListDetailsPage implements OnInit {
     this.listObs$ = this.listserv.getOne(this.activatedRoute.snapshot.paramMap.get('myid'));
     this.listObs$.subscribe(c => {
       this.list = c;
-      this.list.Todos.forEach(p => {console.log(p.Name); });
     });
 
   }
