@@ -1,32 +1,73 @@
 import { Injectable } from '@angular/core';
 import { List } from '../models/list';
 import { Todo } from '../models/todo';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {map, switchMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {AuthentService} from './authent.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
 
-  private lists: List[];
-  constructor() {
-    this.lists = [];
-    this.addList(new List('teste'));
-    this.addList(new List('teste2'));
+  private lists: AngularFirestoreCollection<List>;
+
+  constructor(private afs: AngularFirestore, private auth: AuthentService) {
+    this.auth.getConnectedUser().subscribe(plop => {
+      if (plop != null) {
+        this.lists = this.afs.collection('Lists', ref => ref.where('owners', 'array-contains' , plop.uid  ));
+      }
+    });
+
   }
 
-  getLists(){
-    return this.lists;
+  getLists(): Observable<List[]>{
+    return this.lists.snapshotChanges().pipe(map(actions => this.SnapshotToData<List>(actions)));
   }
 
-  addList(l: List){
-    this.lists.push(l);
+  getOne(id: string){
+    return this.lists.doc<List>(id).valueChanges().pipe(switchMap(list =>
+        this.lists.doc(id).collection<Todo>('Todos').snapshotChanges().pipe(
+            map(actions => {
+              list.Todos = this.SnapshotToData<Todo>(actions);
+              return list;
+            })
+        )));
   }
 
-  addTodo(nbl: number, t: Todo){
-    this.lists[nbl].Todos.push(t);
+
+  async addList(l: List) {
+      this.auth.getConnectedUser().subscribe(async plop => {
+          if (plop != null) {
+              l.owners.push(plop.uid);
+              await this.lists.doc(l.id).set({owners: l.owners, id: l.id, Todos: l.Todos, Name: l.Name});
+          }
+      });
   }
 
-  removeTodo(nbl: number, nbt: number){
-    this.lists[nbl].Todos.splice(nbt, 1);
+  async addTodo(IdL: string, t: Todo) {
+    await this.lists.doc<List>(IdL).collection<Todo>('Todos').doc(t.id).set({
+      id: t.id,
+      Name: t.Name,
+      Description: t.Description,
+      isDone: t.isDone
+    });
+  }
+
+  async removeList(l: List) {
+    await this.lists.doc<List>(l.id).delete();
+  }
+
+  async removeTodo(IdL: string, t: Todo) {
+    await this.lists.doc<List>(IdL).collection<Todo>('Todos').doc<Todo>(t.id).delete();
+  }
+
+  private SnapshotToData<T>(actions) {
+    return actions.map(a => {
+      const data = a.payload.doc.data();
+      const id = a.payload.doc.id;
+      return {id, ...data}as T;
+    });
   }
 }

@@ -17,7 +17,8 @@ export class HomePage {
   list: List[];
   constructor(private listserv: ListService, public modal: ModalController, private route: Router, private auth: AuthentService) {
 
-    this.list = this.listserv.getLists();
+    this.listserv.getLists().subscribe(c => {this.list = c; });
+
   }
 
   async presentModal() {

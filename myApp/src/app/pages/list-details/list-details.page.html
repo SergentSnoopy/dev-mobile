@@ -1,3 +1,4 @@
+<ion-content [fullscreen]="true" id="container" *ngIf="listObs$ | async as obs; else loading">
 <ion-header>
   <ion-toolbar>
     <ion-title>list-details {{this.list.Name}}</ion-title>
@@ -22,3 +23,5 @@
   </ion-list>
   <ion-button color="primary" (click)="this.presentModal()">Créer Todo</ion-button>
 </ion-content>
+</ion-content>
+<ng-template #loading></ng-template>

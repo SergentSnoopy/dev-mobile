@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import 'firebase/auth';
 import { AuthentService } from 'src/app/services/authent.service';
+import {DbtoListService} from '../services/dbto-list.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +19,8 @@ export class LoginPage {
 
   constructor( private formBuilder: FormBuilder,
                private toastController: ToastController, private route: Router,
-               private auth: AuthentService) {
+               private auth: AuthentService,
+               private dbtolist: DbtoListService) {
     this.withEmail = false;
     this.login = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -32,6 +34,7 @@ export class LoginPage {
       try {
         await this.auth.login(this.login.get('email').value, this.login.get('password').value);
         this.route.navigate(['home']);
+
       } catch (e) {
         const toast = await this.toastController.create({
           color: 'danger',

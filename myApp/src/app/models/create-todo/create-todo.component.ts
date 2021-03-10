@@ -24,8 +24,7 @@ export class CreateTodoComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.listserv.getLists()[this.id].Todos.push(
-        new Todo(this.checkoutForm.value.name, this.checkoutForm.value.desc));
+    this.listserv.addTodo(this.id, new Todo(this.checkoutForm.value.name, this.checkoutForm.value.desc));
     this.dismiss();
   }
 

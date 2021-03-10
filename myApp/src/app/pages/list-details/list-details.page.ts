@@ -5,6 +5,7 @@ import {ListService} from '../../services/list.service';
 import {CreateListComponent} from '../../modals/create-list/create-list.component';
 import {ModalController} from '@ionic/angular';
 import {CreateTodoComponent} from '../../models/create-todo/create-todo.component';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-list-details',
@@ -12,12 +13,18 @@ import {CreateTodoComponent} from '../../models/create-todo/create-todo.componen
   styleUrls: ['./list-details.page.scss'],
 })
 export class ListDetailsPage implements OnInit {
-  private list: List;
+  list: List;
+  listObs$: Observable<List>;
 
-  constructor(private activatedRoute: ActivatedRoute, private listserv: ListService, public modal: ModalController) { }
+  constructor(private activatedRoute: ActivatedRoute, private listserv: ListService, public modal: ModalController) {}
 
   ngOnInit() {
-    this.list = this.listserv.getLists()[this.activatedRoute.snapshot.paramMap.get('myid')];
+    this.listObs$ = this.listserv.getOne(this.activatedRoute.snapshot.paramMap.get('myid'));
+    this.listObs$.subscribe(c => {
+      this.list = c;
+      this.list.Todos.forEach(p => {console.log(p.Name); });
+    });
+
   }
 
   async presentModal() {
