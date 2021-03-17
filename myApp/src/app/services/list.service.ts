@@ -16,7 +16,7 @@ export class ListService {
   constructor(private afs: AngularFirestore, private auth: AuthentService) {
     this.auth.getConnectedUser().subscribe(plop => {
       if (plop != null) {
-        this.lists = this.afs.collection('Lists', ref => ref.where('owners', 'array-contains' , plop.uid  ));
+        this.lists = this.afs.collection('Lists', ref => ref.where('owners', 'array-contains' , plop.email  ));
       }
     });
 
@@ -40,11 +40,19 @@ export class ListService {
   async addList(l: List) {
       this.auth.getConnectedUser().subscribe(async plop => {
           if (plop != null) {
-              l.owners.push(plop.uid);
+              l.owners.push(plop.email);
               await this.lists.doc(l.id).set({owners: l.owners, id: l.id, Todos: l.Todos, Name: l.Name});
           }
       });
   }
+
+    async addOwner(l: List) {
+        this.auth.getConnectedUser().subscribe(async plop => {
+            if (plop != null) {
+                await this.lists.doc(l.id).update({owners: l.owners, id: l.id, Todos: l.Todos, Name: l.Name});
+            }
+        });
+    }
 
   async addTodo(IdL: string, t: Todo) {
     await this.lists.doc<List>(IdL).collection<Todo>('Todos').doc(t.id).set({

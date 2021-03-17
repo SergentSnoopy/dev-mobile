@@ -15,9 +15,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import {AddUserComponent} from './modals/add-user/add-user.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateListComponent, CreateTodoComponent],
+  declarations: [AppComponent, CreateListComponent, CreateTodoComponent, AddUserComponent],
   entryComponents: [],
   // tslint:disable-next-line:max-line-length
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAnalyticsModule, AngularFirestoreModule],
