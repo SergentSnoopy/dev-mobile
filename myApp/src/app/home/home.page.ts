@@ -36,7 +36,7 @@ export class HomePage {
     this.route.navigate(['login']);
   }
 
-  bite(l: List) {
+  removeList(l: List) {
     this.listserv.removeList(l);
   }
 }

@@ -6,6 +6,7 @@ import {CreateListComponent} from '../../modals/create-list/create-list.componen
 import {ModalController} from '@ionic/angular';
 import {CreateTodoComponent} from '../../models/create-todo/create-todo.component';
 import {Observable} from 'rxjs';
+import {Todo} from '../../models/todo';
 
 @Component({
   selector: 'app-list-details',
@@ -37,5 +38,11 @@ export class ListDetailsPage implements OnInit {
       presentingElement: await this.modal.getTop()
     });
     return await modal.present();
+  }
+
+
+  removeTodo(idl: string , t: Todo) {
+    console.log(t.id);
+    this.listserv.removeTodo(idl, t);
   }
 }
