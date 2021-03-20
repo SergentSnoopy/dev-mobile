@@ -4,8 +4,11 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import 'firebase/auth';
+import firebase from 'firebase/app';
 import { AuthentService } from 'src/app/services/authent.service';
 import {DbtoListService} from '../services/dbto-list.service';
+import '@codetrix-studio/capacitor-google-auth';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -20,6 +23,7 @@ export class LoginPage {
   constructor( private formBuilder: FormBuilder,
                private toastController: ToastController, private route: Router,
                private auth: AuthentService,
+               private afAuth: AngularFireAuth,
                private dbtolist: DbtoListService) {
     this.withEmail = false;
     this.login = this.formBuilder.group({
@@ -27,6 +31,7 @@ export class LoginPage {
       password: ['', Validators.required],
     });
   }
+
 
 
   async loginForm(){
