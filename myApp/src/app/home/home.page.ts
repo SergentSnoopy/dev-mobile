@@ -3,6 +3,7 @@ import {ListService} from '../services/list.service';
 import {List} from '../models/list';
 import {ModalController} from '@ionic/angular';
 import {CreateListComponent} from '../modals/create-list/create-list.component';
+import {AddUserComponent} from '../modals/add-user/add-user.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { AuthentService } from 'src/app/services/authent.service';
@@ -38,5 +39,18 @@ export class HomePage {
 
   removeList(l: List) {
     this.listserv.removeList(l);
+  }
+
+  async presentModalAddUser(l: List) {
+    const modal = await this.modal.create({
+      component: AddUserComponent,
+      componentProps: {
+        li: l
+      },
+      cssClass: 'my-custom-class',
+      swipeToClose: true,
+      presentingElement: await this.modal.getTop()
+    });
+    return await modal.present();
   }
 }

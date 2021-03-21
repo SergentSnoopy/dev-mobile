@@ -11,8 +11,7 @@ import {ModalController} from '@ionic/angular';
 })
 export class CreateListComponent implements OnInit {
   checkoutForm = this.formBuilder.group({
-    name: '',
-    address: ''
+    name: ''
   });
 
   constructor(private listserv: ListService, private formBuilder: FormBuilder, public modal: ModalController) { }
@@ -21,9 +20,8 @@ export class CreateListComponent implements OnInit {
     this.listserv.addList(new List(this.checkoutForm.value.name));
     this.dismiss();
   }
+
   dismiss() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
     this.modal.dismiss({
       dismissed: true
     });
