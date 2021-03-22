@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "projet-dev-mobile-fcb0f": {
+      "hosting": {
+        "app": [
+          "projet-dev-mobile-fcb0f"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div id="container">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label>
+        Mail :
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input id="name" type="text" formControlName="mail"></ion-input>
+    </ion-item>
+    <div class="text-danger" *ngIf="checkoutForm.invalid && checkoutForm.get('mail').touched && checkoutForm.get('mail').errors">
+      <small *ngIf="checkoutForm.get('mail').errors.required">Field is required</small>
+    </div>
+    <ion-button color="primary" type="submit">Ajouter Utilisateur</ion-button>
+  </form>
+</div>
