@@ -10,7 +10,7 @@
   <section class="ion-margin-vertical">
     <ion-button color="dark" expand="block" shape="round" fill="outline" large (click)="withEmail = !withEmail">
       <ion-icon slot="end" name="mail"></ion-icon>
-      With email
+      Avec email
     </ion-button>
   </section>
   <div *ngIf="withEmail">
@@ -25,7 +25,7 @@
           <small *ngIf="login.get('email').errors.email">Not a valid email</small>
         </div>
         <ion-item>
-          <ion-label>Password</ion-label>
+          <ion-label>Mot de Passe</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
         <div class="text-danger" *ngIf="login.invalid && login.get('password').touched && login.get('password').errors">
@@ -38,6 +38,7 @@
         </ion-button>
       </form>
     </section>
+
     <section class="ion-margin-vertical">
       <ion-label>Mot de passe oublié ?</ion-label>
     </section>
@@ -48,6 +49,9 @@
       </ion-button>
     </section>
   </div>
+  <section>
+    <ion-button (click)="google()">Avec Google <ion-icon name="logo-google"></ion-icon> </ion-button>
+  </section>
   <section  class="ion-margin-vertical">
     <br/> 
     <br/>

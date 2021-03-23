@@ -51,4 +51,21 @@ export class LoginPage {
       }
     }
   }
+
+  async google() {
+      try {
+       const googleUser = await
+           Plugins.GoogleAuth.signIn();
+       const credential = firebase.auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
+       this.afAuth.signInAndRetrieveDataWithCredential(credential);
+       this.route.navigate(['home']);
+      } catch (e) {
+          const toast = await this.toastController.create({
+              color: 'danger',
+              duration: 2000,
+              message: e.message
+          });
+          await toast.present();
+      }
+  }
 }
