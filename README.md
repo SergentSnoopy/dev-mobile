@@ -15,7 +15,7 @@ Auteurs : Prat Gary et Rotival Antoine
 - Déconexion
 
 ## Information IHM
-Pour avoir accés au bouton de supression d'une liste oou d'une todo, il faut slide a gauche.
+Pour avoir accés au bouton de supression d'une liste oou d'un todo, il faut slide a gauche.
 
-Pour ajouter une utilisateur à une liste ls faut slide à droite.
+Pour ajouter un utilisateur à une liste, il faut slide à droite.
 
