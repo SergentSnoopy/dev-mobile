@@ -63,6 +63,15 @@ export class ListService {
     });
   }
 
+  async TodoIsDone(IdL: string, t: Todo){
+      await this.lists.doc<List>(IdL).collection<Todo>('Todos').doc(t.id).update({
+          id: t.id,
+          Name: t.Name,
+          Description: t.Description,
+          isDone: t.isDone
+      });
+  }
+
   async removeList(l: List) {
       l.Todos.forEach(t => {this.removeTodo(l.id, t); });
       await this.lists.doc<List>(l.id).delete();

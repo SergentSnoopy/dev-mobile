@@ -7,16 +7,16 @@
 
 <ion-content>
   <ion-list>
-
-    <ion-item-sliding *ngFor="let t of this.list.Todos">
-      <ion-item>
+    <ion-item-sliding *ngFor="let t of this.list.Todos"  >
+      <ion-item (click)="Ischecked(t)">
         <ion-label>Name :</ion-label>
         <ion-label>{{t.Name}}</ion-label>
         <ion-label>Description :</ion-label>
         <ion-label>{{t.Description}}</ion-label>
+        <ion-icon name="checkmark-outline" *ngIf="t.isDone"></ion-icon>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="removeTodo(this.list.id,t)"><ion-icon name="trash-outline"></ion-icon></ion-item-option>
+        <ion-item-option color="danger" (click)="removeTodo(t)"><ion-icon name="trash-outline"></ion-icon></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 

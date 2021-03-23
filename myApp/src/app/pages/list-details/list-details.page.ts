@@ -41,8 +41,14 @@ export class ListDetailsPage implements OnInit {
   }
 
 
-  removeTodo(idl: string , t: Todo) {
-    console.log(t.id);
-    this.listserv.removeTodo(idl, t);
+  removeTodo(t: Todo) {
+    this.listserv.removeTodo(this.activatedRoute.snapshot.paramMap.get('myid'), t);
   }
+
+
+  Ischecked(t: Todo){
+    t.isDone = !t.isDone;
+    this.listserv.TodoIsDone(this.activatedRoute.snapshot.paramMap.get('myid'), t);
+  }
+
 }
