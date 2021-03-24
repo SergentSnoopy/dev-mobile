@@ -31,7 +31,9 @@ export class AuthentService {
   }
 
   async logout() {
-    return await this.afAuth.signOut();
+    return this.afAuth.signOut().then(() => {
+        localStorage.removeItem('user');
+      })
   }
 
   async register(email: string, password: string) {

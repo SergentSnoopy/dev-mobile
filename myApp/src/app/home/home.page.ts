@@ -8,6 +8,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { AuthentService } from 'src/app/services/authent.service';
 import { Router } from '@angular/router';
+import '@codetrix-studio/capacitor-google-auth';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,10 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   list: List[];
-  constructor(private listserv: ListService, public modal: ModalController, private route: Router, private auth: AuthentService) {
+  constructor(private listserv: ListService, 
+              public modal: ModalController, 
+              private route: Router, 
+              private auth: AuthentService) {
 
     this.listserv.getLists().subscribe(c => {this.list = c; });
 
@@ -34,7 +39,7 @@ export class HomePage {
 
   async logout() {
     await this.auth.logout();
-    this.route.navigate(['login']);
+    window.location.reload()
   }
 
   removeList(l: List) {
